@@ -23,4 +23,18 @@ Notes:
 
 
 def compute_statistics(df):
-    "IMPLEMENT ME"
+    # Most common name
+    most_common_name = df['Name'].mode().iloc[0]
+
+    # Average age
+    average_age = float(df['Age'].mean())
+
+    # IQR of rating
+    q75, q25 = np.percentile(df['Rating'], [75 ,25])
+    iqr_rating = float(q75 - q25)
+
+    return (most_common_name, average_age, iqr_rating)
+
+# Example usage:
+result = compute_statistics(df)
+print(result)

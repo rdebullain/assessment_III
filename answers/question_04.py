@@ -14,5 +14,17 @@ Notes:
     - In the variable 'SQL' store only the final query ready for validation 
 """
 
-
-SQL = "IMPLEMENT ME"
+# Query to get the salary span for each job ID excluding programmer and sorted by salary span
+SQL = """
+SELECT 
+    job_id, 
+    MAX(salary) - MIN(salary) AS salary_span
+FROM 
+    employees
+WHERE 
+    job_id != 9
+GROUP BY 
+    job_id
+ORDER BY 
+    salary_span DESC;
+"""

@@ -20,4 +20,14 @@ Notes:
 """
 
 def filter_dataframe(df):
-    "IMPLEMENT ME"
+    # Select only numeric columns
+    numeric_df = df.select_dtypes(include=[np.number])
+    
+    # Drop rows with any missing values
+    filtered_df = numeric_df.dropna()
+    
+    return filtered_df
+
+# Example usage:
+result = filter_dataframe(df)
+print(result)
